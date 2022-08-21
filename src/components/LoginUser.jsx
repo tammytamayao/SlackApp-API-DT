@@ -1,31 +1,28 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {client} from "../config/AxiosConfig";
 import { useNavigate } from "react-router-dom";
+import loader from './Ellipsis.svg';
 
 export const LoginUser = () => {
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [userDetails, setUserDetails] = useState({})
     const [isLoading, setIsLoading] = useState(false);
     const [logInMsg,setLogInMsg]=useState({});
     const navigate=useNavigate();
     
-    useEffect(() => {
-        console.log("User: ", userDetails)
-    }, [userDetails])
-    
-    const loginUser = async (evt) => {
+    const login = async (evt) => {
         evt.preventDefault();
         setIsLoading(true);
         
-        const payload = {email: email, password: password}
+    const payload = {email: email, password: password};
+
         try {
             const response = await client.post('/auth/sign_in', payload);
-            setUserDetails({...response.data.data, ...response.headers});
-            alert('Login successful');
+            localStorage.setItem('userHeader',JSON.stringify(response.headers));
+            localStorage.setItem('userInfo',JSON.stringify(payload));
             setIsLoading(false);
-            navigate('/DirectMessage');
-
+            navigate('/SendMessage');
         }
         catch (error) {
             console.log(error.response.data.errors);
@@ -36,14 +33,16 @@ export const LoginUser = () => {
     
     return (
     <div>
-    {isLoading ? (<p>Loading ...</p>) : (
-    <form onSubmit={evt => loginUser(evt)}>
+    {isLoading ? (<p><img src={loader} alt='loading ...'/></p>) : (
+    <div>
+    <form onSubmit={evt => login(evt)}>
         <input type="text" placeholder={"Email"} onChange={evt => setEmail(evt.target.value)}/>
         <input type="password" placeholder={"Password"} onChange={evt => setPassword(evt.target.value)}/>
-        <button type={"submit"}>Sign Up</button>
+        <button type={"submit"}>Sign In</button>
     </form>
+    </div>
     )}
-    {logInMsg.success===false ? <p>{logInMsg.errors}</p> : null}
+    {logInMsg.success===false && !isLoading ? <p>{logInMsg.errors}</p> : null}
     </div>
     )
 }
