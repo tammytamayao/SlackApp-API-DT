@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import {client} from "../config/AxiosConfig";
+import loader from './Ellipsis.svg';
 
 export const CreateUser = () => {
     const navigate=useNavigate();
@@ -24,7 +25,6 @@ export const CreateUser = () => {
         console.log(response.data.status);
         setCreateUserStatus(response.data.status);
         setIsLoading(false);
-        alert('Created New User');
         navigate('/LoginUser');
     } catch (error) {
         console.log(error.response.data.status);
@@ -35,18 +35,26 @@ export const CreateUser = () => {
     }
 
     };
+
+    const handleGoToLogin = () => {
+        navigate('/LoginUser');
+    }
+   
     
     return (
         <div>
-        {isLoading ? (<p>Loading ...</p>) : (
+        {isLoading ? (<p><img src={loader} alt='loading ...'/></p>) : (
+            <div>
             <form onSubmit={evt => createUser(evt)}>
                 <input type="text" placeholder={"Email"} onChange={evt => setEmail(evt.target.value)}/>
                 <input type="password" placeholder={"Password"} onChange={evt => setPassword(evt.target.value)}/>
                 <input type="password" placeholder={"Re-type your password"} onChange={evt => setPasswordConfirmation(evt.target.value)}/>
                 <button type={"submit"}>Sign Up</button>
             </form>
+            <div><button onClick={handleGoToLogin}>Sign In</button></div>
+            </div>
         )}
-        {createUserStatus!=='success' ? createUserMsg : null}
+        {createUserStatus!=='success' && !isLoading ? createUserMsg : null}
         </div>
     )
 }
