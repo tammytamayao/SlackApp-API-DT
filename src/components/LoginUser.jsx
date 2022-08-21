@@ -1,49 +1,48 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {client} from "../config/AxiosConfig";
-
+import { useNavigate } from "react-router-dom";
+import loader from './Ellipsis.svg';
 
 export const LoginUser = () => {
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [userDetails, setUserDetails] = useState({})
-    const [isPending, setIsPending] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [logInMsg,setLogInMsg]=useState({});
+    const navigate=useNavigate();
     
-    useEffect(() => {
-        console.log("From useEffect: ", userDetails)
-    }, [userDetails])
-    
-    const loginUser = async (evt) => {
+    const login = async (evt) => {
         evt.preventDefault();
-        setIsPending(true);
+        setIsLoading(true);
         
-        const payload = {email: email, password: password}
-        
+    const payload = {email: email, password: password};
+
         try {
             const response = await client.post('/auth/sign_in', payload);
-            // the headers and user data are spread into userDetails, so you only need to access it from this object
-            // maybe hook up userDetails to a context
-            setUserDetails({...response.data.data, ...response.headers})
-            
-            // Uncomment these if you want to see how the response object is structured
-            // console.log(response)
-            // console.log("User Data Object", userData)
-            // console.log(`User Details State:`, userDetails);
+            localStorage.setItem('userHeader',JSON.stringify(response.headers));
+            localStorage.setItem('userInfo',JSON.stringify(payload));
+            setIsLoading(false);
+            navigate('/SendMessage');
         }
         catch (error) {
-            console.log("Error! ", error.message);
-        }
-        finally {
-            setIsPending(false);
+            console.log(error.response.data.errors);
+            setIsLoading(false);
+            setLogInMsg(error.response.data);
         }
     };
     
     return (
-        <div>
-            <form onSubmit={evt => loginUser(evt)}>
-                <input type="text" placeholder={"Email"} onChange={evt => setEmail(evt.target.value)}/>
-                <input type="password" placeholder={"Password"} onChange={evt => setPassword(evt.target.value)}/>
-                <button type={"submit"}>Sign Up</button>
-            </form>
-        </div>
+    <div>
+    {isLoading ? (<p><img src={loader} alt='loading ...'/></p>) : (
+    <div>
+    <form onSubmit={evt => login(evt)}>
+        <input type="text" placeholder={"Email"} onChange={evt => setEmail(evt.target.value)}/>
+        <input type="password" placeholder={"Password"} onChange={evt => setPassword(evt.target.value)}/>
+        <button type={"submit"}>Sign In</button>
+    </form>
+    </div>
+    )}
+    {logInMsg.success===false && !isLoading ? <p>{logInMsg.errors}</p> : null}
+    </div>
     )
 }
