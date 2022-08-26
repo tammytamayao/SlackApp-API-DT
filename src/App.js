@@ -2,11 +2,11 @@ import './App.css';
 import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
 import {CreateUser} from "./components/Register/CreateUser";
 import {LoginUser} from "./components/Login/LoginUser";
-import DirectMessage from './components/DirectMessage/DirectMessage';
 import Provider from './context/HeaderContext';
 import Channel from './components/Channel/Channel';
 import ChatDM from './components/Chat/ChatDM';
 import ChatChannel from './components/Chat/ChatChannel';
+import DashboardDM from './components/DashboardDM';
 
 function App() {
     return (
@@ -16,10 +16,10 @@ function App() {
                     <Routes>
                         <Route path={"/LoginUser"} element={<LoginUser />} />
                         <Route path={"/"} element={<CreateUser />} />
-                        <Route path={"/DirectMessage"} element={<DirectMessage />} />
                         <Route path={"/Channel"} element={<Channel/>}/>
                         <Route path={"/ChatDM"} element={<ChatDM/>}/>
                         <Route path={"/ChatChannel"} element={<ChatChannel/>}/>
+                        <Route path={"/DashboardDM"} element={<DashboardDM/>}/>
                     </Routes>
                 </BrowserRouter>
         </div>
