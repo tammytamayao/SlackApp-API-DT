@@ -1,0 +1,88 @@
+.createuser-container-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.createuser-container {
+    width: 33%;
+}
+
+.signin-container-container {
+    display: flex;
+    justify-content: center;
+}
+.signin-container {
+    padding-bottom: 5px;
+    border-radius: 10px;
+}
+
+#SlackLogoSignIn {
+    width: 170px;
+    height: 42px;
+    padding: 25px 0px;
+}
+
+.header1 {
+    font-size: 28pt;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+.header-container {
+    padding-bottom: 20px;
+}
+
+#signinInput {
+    width: 280px;
+    height: 25px;
+    font-size: 12pt;
+}
+
+.inputContainer, .signinBtn-container {
+    padding: 5px;
+}
+
+#signinBtn {
+    background-color: #4a154b;
+    font-size: 12pt;
+    height: 33px;
+    width: 288px;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    border: 1pt solid #4a154b;
+    border-radius: 3px;
+}
+
+#signinBtn:hover{
+    background-color: #835c84;
+    transition: 0.3s;
+}
+
+.header2-container{
+    padding: 20px 0px 5px 0px;
+}
+
+.header2-caption,.header2-link {
+    font-size: 11pt;
+}
+
+.errormsg {
+    color: red;
+    font-weight: 500;
+    font-size: 14pt;
+    font-style: italic;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    font-size: 10pt;
+    padding: 80px 30px 0px 30px ;
+    color: #6f6973;
+}
+
+
+
+
