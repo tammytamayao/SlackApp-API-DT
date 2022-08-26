@@ -1,0 +1,72 @@
+.header-container {
+    background-color: #350d36;
+    height: 25px;
+    display: flex;
+    justify-content: flex-start;
+}
+.headerbarIcon {
+    width: 20px;
+    height: 20px;
+    padding-top: 11px;
+    position: absolute;
+    left:220px;
+    height: 18px;
+    filter: invert(60%) sepia(79%) saturate(0%) hue-rotate(86deg) brightness(118%) contrast(1000%);
+}
+
+.searchBar-container{
+    padding-left: 265px;
+    padding-top: 9px;
+}
+
+#searchBar {
+    height: 19px;
+    border:1px solid #5d3d5e;
+    border-radius: 5px;
+    background-color: #5d3d5e;
+    color: white;
+    font-size: 10.5pt;
+    padding: 3px 0px 3px 5px;
+    width: 680px;
+}
+
+#searchBar::placeholder {
+    color: white;
+}
+
+.searchbarIcon {
+    width: 18px;
+    height: 18px;
+    padding-top: 13px;
+    position: relative;
+    right:30px;
+    height: 18px;
+    filter: invert(60%) sepia(79%) saturate(0%) hue-rotate(86deg) brightness(118%) contrast(1000%);
+}
+
+.filterIcon {
+    width: 18px;
+    height: 18px;
+    padding-top: 13px;
+    position: relative;
+    right:75px;
+    height: 18px;
+    filter: invert(60%) sepia(79%) saturate(0%) hue-rotate(86deg) brightness(118%) contrast(1000%);
+}
+.helpIcon {
+    width: 18px;
+    height: 18px;
+    padding-top: 13px;
+    position: absolute;
+    right: 60px;
+    height: 18px;
+    filter: invert(60%) sepia(79%) saturate(0%) hue-rotate(86deg) brightness(118%) contrast(1000%);
+}
+
+.userimgIcon {
+    min-height: 28px;
+    padding-top: 8px;
+    position:absolute;
+    right:20px;
+    height: 18px;
+}
