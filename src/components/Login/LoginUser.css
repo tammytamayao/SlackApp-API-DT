@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200&family=Mina&family=Open+Sans:wght@500;700&family=Poppins:wght@200&family=Prompt:wght@200&family=Space+Grotesk:wght@300;400&display=swap');
+
+.login-container {
+    width: 32%;
+    background-color: white;
+    padding: 10px 0px 30px 0px;
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+.login-container-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 200px;
+    background-color: #4a154b;
+}
+.signup-container-container {
+    display: flex;
+    justify-content: center;
+}
+.signup-container {
+    padding-bottom: 5px;
+    border-radius: 10px;
+}
+
+#SlackLogoSignIn {
+    width: 170px;
+    height: 42px;
+    padding: 25px 0px;
+}
+
+.header1 {
+    font-size: 28pt;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+.header1-container {
+    padding-bottom: 20px;
+}
+
+#logo {
+    width:12px;
+    height: 12px;
+}
+
+#applebtncaption {
+    font-size: 12pt;
+}
+
+#googlebtncaption {
+    color: #6392f5;
+    border-color: #6392f5;
+    font-size: 12pt;
+}
+
+
+#signupInput {
+    width: 280px;
+    height: 25px;
+    font-size: 12pt;
+}
+
+#googleBtn {
+    border: 1.5px solid #6392f5;    
+}
+
+#appleBtn {
+    border: 1.5px solid black;
+}
+
+#googleBtn, #appleBtn {
+    width: 288px;
+    height: 30px;
+    background-color: white;
+    border-radius: 3px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    padding-bottom: 1px;
+}
+
+#signupBtn {
+    background-color: #4a154b;
+    height: 33px;
+    width: 288px;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    border: 1pt solid #4a154b;
+    border-radius: 3px;
+    font-size: 12pt;
+}
+
+#signupBtn:hover{
+    background-color: #835c84;
+    transition: 0.3s;
+}
+
+.inputContainer, .signupBtn-container, .googleBtn-container, .appleBtn-container {
+    padding: 5px;
+}
+
+.or {
+    background:#fff; 
+    padding:0 10px;
+}
+
+.or-container {
+    width: 50%; 
+    text-align: center; 
+    border-bottom: 1px solid #000; 
+    color: #6f6973;
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+}
+
+.or-container-container {
+    display: flex;
+    justify-content: center;
+    font-size: 10pt;
+    color: #6f6973;
+}
+
+.errormsg {
+    color: red;
+    font-weight: 500;
+    font-size: 14pt;
+    font-style: italic;
+}
+
+
