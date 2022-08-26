@@ -2,8 +2,12 @@ import {useEffect, useState, useContext} from "react";
 import {client} from "../../config/AxiosConfig";
 import { useNavigate } from "react-router-dom";
 import loader from '../Asset/Ellipsis.svg';
+import StackLogoWithText from '../Asset/Slack-Logo-With-Text.svg';
+import google from '../Asset/google-logo.png';
+import apple from '../Asset/apple-logo.png';
 import {UserContextHeader} from '../../context/HeaderContext';
 import {baseURL} from "../../config/AxiosConfig";
+import './LoginUser.css'
 
 export const LoginUser = () => {
 
@@ -28,7 +32,7 @@ export const LoginUser = () => {
 
             }
             setIsLoading(false);
-            navigate('/DirectMessage');
+            navigate('/DashboardDM');
             window.location.reload();
         }
         catch (error) {
@@ -99,17 +103,30 @@ export const LoginUser = () => {
 	}, []);
     
     return (
-    <div>
+    <div className="login-container-container">
+    <div className="login-container">
     {isLoading ? (<p><img src={loader} alt='loading ...'/></p>) : (
-    <div>
+    <div className="signup-container-container">
+    <div className="signup-container">
+        <div><img src={StackLogoWithText} alt='Slack' id="SlackLogoSignIn"/></div>
+        <div className="header1-container">
+        <div><span className="header1">Sign in to Slack</span></div>
+        <div><span>We suggest using the email address you use at work</span></div>
+        </div>
     <form onSubmit={evt => login(evt)}>
-        <input type="text" placeholder={"Email"} onChange={evt => setEmail(evt.target.value)}/>
-        <input type="password" placeholder={"Password"} onChange={evt => setPassword(evt.target.value)}/>
-        <button type="submit" onClick={initializeList}>Sign In</button>
+        <div className="inputContainer"><input id="signupInput" type="text" placeholder={"name@work-email.com"} onChange={evt => setEmail(evt.target.value)}/></div>
+        <div className="inputContainer"><input id="signupInput" type="password" placeholder={"Password"} onChange={evt => setPassword(evt.target.value)}/></div>
+        <div className="signupBtn-container"><input id="signupBtn" type="submit" onClick={initializeList} value="Sign In"/></div>
     </form>
+    <div className="or-container-container"><div className="or-container"><span className="or">OR</span></div></div>
+    <div className="googleBtn-container"><button id="googleBtn" ><img id='logo' src={google} alt='logo'/><span id='googlebtncaption'> Sign in with Google</span></button></div>
+    <div className="appleBtn-container"><button id="appleBtn"><img id='logo' src={apple} alt='logo'/><span id='applebtncaption'> Sign in with Apple</span></button></div>
+    </div>
     </div>
     )}
-    {logInMsg.success===false && !isLoading ? <p>{logInMsg.errors}</p> : null}
+    <div>{logInMsg.success===false && !isLoading ? <p className="errormsg">{logInMsg.errors}</p> : null}</div>
     </div>
+    </div>
+    
     )
 }
