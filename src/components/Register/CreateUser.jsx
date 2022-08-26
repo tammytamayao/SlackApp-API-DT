@@ -1,7 +1,10 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import {client} from "../../config/AxiosConfig";
+import StackLogoWithText from '../Asset/Slack-Logo-With-Text.svg';
 import loader from '../Asset/Ellipsis.svg';
+import {Link} from "react-router-dom";
+import './CreateUser.css'
 
 export const CreateUser = () => {
     const navigate=useNavigate();
@@ -35,26 +38,41 @@ export const CreateUser = () => {
     }
 
     };
-
-    const handleGoToLogin = () => {
-        navigate('/LoginUser');
-    }
    
     
     return (
-        <div>
+    <div className="createuser-container-container">
+        <div className="createuser-container">
         {isLoading ? (<p><img src={loader} alt='loading ...'/></p>) : (
-            <div>
+            <div className="signin-container-container">
+            <div className="signin-container">
+            <div><img src={StackLogoWithText} alt='Slack' id="SlackLogoSignIn"/></div>
+        <div className="header-container">
+        <div><span className="header1">Sign up to Slack</span></div>
+        <div><span>We suggest using the email address you use at work</span></div>
+        </div>
             <form onSubmit={evt => createUser(evt)}>
-                <input type="text" placeholder={"Email"} onChange={evt => setEmail(evt.target.value)}/>
-                <input type="password" placeholder={"Password"} onChange={evt => setPassword(evt.target.value)}/>
-                <input type="password" placeholder={"Re-type your password"} onChange={evt => setPasswordConfirmation(evt.target.value)}/>
-                <button type={"submit"}>Sign Up</button>
+                <div className="inputContainer"><input id="signinInput" type="text" placeholder={"Email"} onChange={evt => setEmail(evt.target.value)}/></div>
+                <div className="inputContainer"><input id="signinInput" type="password" placeholder={"Password"} onChange={evt => setPassword(evt.target.value)}/></div>
+                <div className="inputContainer"><input id="signinInput" type="password" placeholder={"Re-type your password"} onChange={evt => setPasswordConfirmation(evt.target.value)}/></div>
+                <div className="signinBtn-container"><input id="signinBtn" type={"submit"} value="Continue"/></div>
             </form>
-            <div><button onClick={handleGoToLogin}>Sign In</button></div>
+           
+            </div>
             </div>
         )}
-        {createUserStatus!=='success' && !isLoading ? createUserMsg : null}
+        {createUserStatus!=='success' && !isLoading ? <span className="errormsg">{createUserMsg}</span> : null}
+        
+            <div className="header2-container">
+                <span className="header2-caption">Already using slack?</span>
+                <span className="header2-link"><br/><Link to='/LoginUser'>Sign in to an existing workspace</Link></span>
+            </div>
+            <footer>
+                <span>Privacy & terms</span>
+                <span>Contact us</span>
+                <span>Change Region</span>
+            </footer>
         </div>
+    </div>
     )
 }
