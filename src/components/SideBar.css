@@ -1,0 +1,114 @@
+.sidebar-container {
+    text-align: left;
+    background-color: #4a154b;
+    width: 265px;
+    height:100vh;
+}
+
+.sidebar-title-container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid #582e58;
+    border-bottom: 1px solid #582e58;
+}
+
+.sidebar-title {
+    font-size: 14pt;
+    font-weight: bold;
+    color: white;
+}
+
+.sidebar-title-Icon {
+    width: 12px;
+    height: 12px;
+    padding: 0px 5px;
+    filter: invert(60%) sepia(79%) saturate(0%) hue-rotate(86deg) brightness(118%) contrast(119%)
+}
+
+.sidebar-top-ul{
+    padding: 12px 0px 12px 10px;
+    margin: 0;
+    border-bottom: 1px solid #582e58;
+
+}
+
+.sidebar-top-list {
+    list-style: none;
+    font-size: 12pt;
+    color:#c1b1c1;
+    padding: 4px;
+    font-weight: 475;
+    text-decoration: none;
+}
+
+.sidebar-top-list:hover {
+    background-color: #1164a3;
+    color:white;
+}
+
+.sidebarIcon {
+    width: 16px;
+    height: 16px;
+    padding: 0px 7px;
+    filter: invert(60%) sepia(79%) saturate(0%) hue-rotate(86deg) brightness(118%) contrast(119%);
+}
+
+.sidebarIcon-newMsg {
+    width: 16px;
+    height: 16px;
+}
+
+.sidebarIcon-newMsg-container {
+    background-color: white;
+    padding:5px 8px;
+    border: 1px solid white;
+    border-radius: 550%;
+}
+
+.sidebar-bottom-container {
+    padding: 15px 0px 0px 16px;
+}
+.sidebar-bottom-Icon {
+    width: 18px;
+    height: 16px;
+    padding: 0px 10px 0px 0px;
+    filter: invert(60%) sepia(79%) saturate(0%) hue-rotate(86deg) brightness(118%) contrast(119%);
+}
+
+.sidebar-bottom {
+    font-size: 12pt;
+    color:#c1b1c1;
+    font-weight: 475;
+}
+
+.sidebar-bottom-caption {
+    position: relative;
+    bottom:3px;
+}
+
+.sidebarIcon-option, .sidebarIcon-plus {
+    position: absolute;
+    left:220px;
+    margin: 0;
+    width: 13px;
+    height: 16px;
+    padding: 0px;
+    filter: invert(60%) sepia(79%) saturate(0%) hue-rotate(86deg) brightness(118%) contrast(119%);
+}
+
+.sidebar-bottom:not(:hover) .Icon-optionhidden {
+    transition: 0.2s;
+    opacity: 0;
+}
+
+.sidebarIcon-option {
+    position: absolute;
+    left:220px;
+}
+
+.sidebarIcon-plus {
+    position: absolute;
+    left:240px;
+}
