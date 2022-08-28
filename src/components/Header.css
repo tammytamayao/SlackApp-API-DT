@@ -1,13 +1,13 @@
 .header-container {
     background-color: #350d36;
-    height: 25px;
+    height: 45px;
     display: flex;
     justify-content: flex-start;
 }
 .headerbarIcon {
     width: 20px;
     height: 20px;
-    padding-top: 11px;
+    padding-top: 13px;
     position: absolute;
     left:220px;
     height: 18px;
