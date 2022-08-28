@@ -47,8 +47,8 @@ export const CreateUser = () => {
             <div className="signin-container-container">
             <div className="signin-container">
             <div><img src={StackLogoWithText} alt='Slack' id="SlackLogoSignIn"/></div>
-        <div className="header-container">
-        <div><span className="header1">Sign up to Slack</span></div>
+        <div className="headercreateuser-container">
+        <div><span className="header-createuser">Sign up to Slack</span></div>
         <div><span>We suggest using the email address you use at work</span></div>
         </div>
             <form onSubmit={evt => createUser(evt)}>
