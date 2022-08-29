@@ -23,7 +23,8 @@ const filteredData = data.filter((el) => {
 })
 
 const gotoChatDM = () => {
-	navigate('/ChatDM');
+	// navigate('/ChatDM');
+    // navigate(`/Messaging/${item.uid}`)
 }
 
 return (
@@ -38,7 +39,7 @@ return (
     <div>
 	      <ul>
             {filteredData.map((item) => (
-                <li key={item.id}  onClick={(e) => gotoChatDM (e)}>{item.uid}</li>
+                <li key={item.id}  onClick={(e) => navigate(`/Messaging/${item.id}`) (e)}>{item.uid}</li>
             ))}
         </ul>
 	  </div>

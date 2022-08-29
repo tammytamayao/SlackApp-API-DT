@@ -7,5 +7,6 @@ export const useGetUserList = async () => {
     
     let response = await client.get("/users");
     setUserList(await response.data)
+    console.log(response.data)
     return userList;
 }

@@ -26,7 +26,8 @@ export const LoginUser = () => {
         try {
             const response = await client.post('/auth/sign_in', payload);
             localStorage.setItem('userHeader',JSON.stringify(response.headers));
-            localStorage.setItem('userInfo',JSON.stringify(payload));
+            localStorage.setItem('userInfo',JSON.stringify(response.data.data));
+            // console.log(userInfo)
             if(response.request.status===200) {
                 console.log('Successfully Logged In');
 
