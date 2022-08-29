@@ -1,41 +1,48 @@
 import {useContext, useEffect, useState} from "react";
 import {UserContextHeader, UserContextInfo} from "../context/HeaderContext";
 import {baseURL, client} from "../config/AxiosConfig";
+import {GetMessages} from "./GetMessages";
 
 
-export const Messages = (userID) => {
+export const Messages = (userID, receiverClass) => {
     const contextHeader = useContext(UserContextHeader);
     const contextInfo = useContext(UserContextInfo);
     
     const [messages, setMessages] = useState([]);
-    console.log(userID)
-    console.log(contextInfo.id)
+    
+    // For testing and checking
+    // console.log(userID)
+    // console.log(contextInfo.id)
+    // console.log(`Messages length ${messages.length}`)
+    // console.log(messages)
+    
     
     const getMessages = async () => {
         setMessages([]);
         try {
-            const response = await client.get(`/messages?sender_id=${contextInfo.id}&receiver_id=${userID}&receiver_class=User`,
+            const response = await client.get(`/messages?sender_id=${contextInfo.id}&receiver_id=${userID}&receiver_class=${receiverClass}`,
                 {headers: contextHeader}
             )
             setMessages(response.data.data)
-            console.log(response)
+            
+            // For displaying message array to console
+            // console.log(response)
         } catch (error) {
-            // if (response.data.errors) return null;
-            //     response.data.data.map((message) => setMessages((messages) => [...messages, message]))
             console.log(error.message)
         }
         
     }
     
     useEffect(() => {
-        getMessages()
+        const response = getMessages(userID)
+        // setMessages(response.data.data)
     }, [])
     
     return (
         <div>
-            {messages.map((message) => (
-                <p key={message.id}>{message.body}</p>
-            ))}
+            {messages.length > 0
+                ? messages.map((message) => <p key={message.id}>{message.body}</p>)
+                : <p>Looks like you don't have any messages</p>}
         </div>
     )
 }

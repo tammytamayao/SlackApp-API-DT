@@ -21,7 +21,6 @@ function App() {
                         <Route path={"/ChatDM"} element={<ChatDM/>}/>
                         <Route path={"/ChatChannel"} element={<ChatChannel/>}/>
                         <Route path={"/DashboardDM"} element={<DashboardDM/>}/>
-                        <Route path={"/Messaging"} element={<Messaging/>}/>
                         <Route path={"/Messaging/:userID"} element={<Messaging/>}/>
                     </Routes>
                 </BrowserRouter>

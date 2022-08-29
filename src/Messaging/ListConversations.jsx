@@ -33,7 +33,7 @@ export const ListConversations = () => {
         <div>
             {conversations.map(conversation => (conversation.uid !== contextInfo.uid &&
                 <div key={conversation.id}>
-                    <p onClick={() => navigate(`/Messaging/${conversation.id}`)}>{conversation.uid}</p>
+                    <p onClick={() => navigate(`/Messaging/${conversation.id}`, {state: {receiverClass: "User"}})}>{conversation.uid}</p>
                 </div>
             ))}
         </div>
