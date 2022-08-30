@@ -4,6 +4,7 @@ import DMHeader from "./DirectMessage/DM-Header";
 import Header from "./Header";
 import SideBar from "./SideBar";
 import ChannelHeader from "./DirectMessage/Channel-Header";
+import { CreateChannel } from "../messaging/CreateChannel";
 
 function DashboardChannel () {
     return (
@@ -11,7 +12,7 @@ function DashboardChannel () {
         <Header/>
             <div className="DashboardDM-bottom">
             <SideBar/>
-            <ChannelHeader/>
+            <CreateChannel/>
             </div>
         </div>
 

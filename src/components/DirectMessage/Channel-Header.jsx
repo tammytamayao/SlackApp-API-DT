@@ -19,14 +19,14 @@ const filteredData = channeldata.filter((el) => {
 		return el;
 	}
 	else {
-		return el.name.toLowerCase().includes(inputText)
+		return el.uid.toLowerCase().includes(inputText)
 	}
 })
 
 return (
   <div className="DM-Header-container-container">
     <div className="DM-Header-container">
-    <div className="DM-title-container"><span className="DM-title">All Channels</span></div>
+    <div className="DM-title-container"><span className="DM-title">AllChannels</span></div>
     <div className="DM-Header-label-container"><span className="DM-Header-label"><label>To: </label><input id="searchUser" value={inputText} onChange={inputHandler} placeholder="Search by channel name"/></span></div>
     <div>
     <ul className="DM-Header-ul">
