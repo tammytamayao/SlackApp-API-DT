@@ -27,6 +27,16 @@ export const Channel = () => {
         setChannelDetails(response.data.data)
     }
     
+    const getChannelMembers = async () => {
+        const memberIDList = await channelDetails.channel_members
+        console.log("Member ID List: ", memberIDList);
+        const filteredMembers = [];
+        data.filter(member => {
+        
+        })
+        console.log(filteredMembers)
+    }
+    
     const [inputText, setInputText] = useState("");
     let inputHandler = (e) => {
         let lowerCase = e.target.value.toLowerCase();
@@ -44,6 +54,14 @@ export const Channel = () => {
         if (inputText !== "")
             return user.uid.toLowerCase().includes(inputText)
     })
+    
+    const addUserToChannel = async (evt) => {
+        evt.preventDefault();
+        const payload = {"id": params.userID, "member_id": addChannelMember.id}
+        const response = await client.post("/channel/add_member", payload, {headers: contextHeader})
+        console.log("Add user response: ", response)
+    }
+    
     
     const submitHandler = async (evt) => {
         evt.preventDefault();
@@ -63,15 +81,9 @@ export const Channel = () => {
         }
     }
     
-    const addUserToChannel = async (evt) => {
-        evt.preventDefault();
-        const payload = {"id": params.userID, "member_id": addChannelMember.id}
-        const response = await client.post("/channel/add_member", payload, {headers: contextHeader})
-        console.log("Add user response: ", response)
-    }
-    
     useEffect(() => {
         const response = getChannelDetails();
+        const memberResponse = getChannelMembers()
     }, [])
 
 
@@ -92,6 +104,12 @@ export const Channel = () => {
                 <input type="text" placeholder={"Enter your message here: "} onChange={evt => setMessage(evt.target.value)}/>
                 <button>Send!</button>
             </form>
+            
+            {/* For displaying channel members but can;t figure out how to get it to work*/}
+            
+            {/*{channelDetails.channel_members.map((member) => (*/}
+            {/*    <span>{member.id}</span>*/}
+            {/*))}*/}
             {Messages(params.userID, receiverClass)}
         </div>
     )
