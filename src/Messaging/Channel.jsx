@@ -10,6 +10,8 @@ export const Channel = () => {
     const contextHeader = useContext(UserContextHeader);
     
     const [channelMembers, setChannelMembers] = useState([])
+    const [channelMembersEmail, setChannelMembersEmail] = useState([])
+    const [memberID, setMemberID] = useState([])
     const [channelDetails, setChannelDetails] = useState([])
     
     const [addChannelMember, setAddChannelMember] = useState({})
@@ -23,18 +25,19 @@ export const Channel = () => {
     
     const getChannelDetails = async() => {
         const response = await client.get(`/channels/${params.userID}`, {headers: contextHeader})
-        console.log("Channel details: ", response.data.data);
+        console.log("Channel Members: ", response.data.data.channel_members);
+        setChannelMembers(response.data.data.channel_members)
         setChannelDetails(response.data.data)
     }
     
     const getChannelMembers = async () => {
-        const memberIDList = await channelDetails.channel_members
-        console.log("Member ID List: ", memberIDList);
-        const filteredMembers = [];
-        data.filter(member => {
-        
+        const memberIDList = [memberID]
+        console.log("getChannelMember", channelMembers)
+        channelMembers.forEach((item) => {
+            memberIDList.push(item.user_id)
+            console.log(memberIDList)
         })
-        console.log(filteredMembers)
+        setMemberID(memberIDList)
     }
     
     const [inputText, setInputText] = useState("");
@@ -82,8 +85,13 @@ export const Channel = () => {
     }
     
     useEffect(() => {
-        const response = getChannelDetails();
-        const memberResponse = getChannelMembers()
+        const getData = async () => {
+            const response = await getChannelDetails();
+            const memberResponse =  await getChannelMembers()
+        }
+        const dataResponse = getData();
+        console.log("Channel members", channelMembers)
+        console.log("Member ID: ", memberID);
     }, [])
 
 
@@ -107,9 +115,9 @@ export const Channel = () => {
             
             {/* For displaying channel members but can;t figure out how to get it to work*/}
             
-            {/*{channelDetails.channel_members.map((member) => (*/}
-            {/*    <span>{member.id}</span>*/}
-            {/*))}*/}
+            {channelMembers.map((member) => (
+                <span key={member.user_id}>{member.user_id} </span>
+            ))}
             {Messages(params.userID, receiverClass)}
         </div>
     )
