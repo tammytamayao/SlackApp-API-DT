@@ -33,7 +33,7 @@ export const ListChannels = () => {
         <div>
             {channels?.map(channel => (
                 <div key={channel.id}>
-                    <p onClick={() => navigate(`/Messaging/${channel.id}`, {state: {receiverClass: "Channel"}})}>{channel.name}</p>
+                    <p onClick={() => navigate(`/Channel/${channel.id}`, {state: {receiverClass: "Channel"}})}>{channel.name}</p>
                 </div>
             ))}
         </div>

@@ -9,6 +9,7 @@ import {Messages} from "./Messages";
 export const Messaging = () => {
     
     const [message, setMessage] = useState("");
+    
     const contextHeader = useContext(UserContextHeader);
     
     const params = useParams()
@@ -18,6 +19,8 @@ export const Messaging = () => {
     // console.log(`Params: ${params.userID}`)
     // console.log(location.state.receiverClass)
     // console.log(`Receiver Class: ${receiverClass}`)
+    
+    
     
     const submitHandler = async (evt) => {
         evt.preventDefault();
@@ -35,8 +38,8 @@ export const Messaging = () => {
         } catch (error) {
             console.log(error.response)
         }
-        
     }
+    
     
     return (
         <div>
