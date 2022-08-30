@@ -24,7 +24,7 @@ export const Messaging = () => {
         try {
             const sentMessage = await client.post("/messages",{
                 "receiver_id": params.userID,
-                "receiver_class": "User",
+                "receiver_class": receiverClass,
                 "body": message,
             }, {
                 headers: contextHeader
