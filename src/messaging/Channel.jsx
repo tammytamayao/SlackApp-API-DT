@@ -112,20 +112,20 @@ export const Channel = () => {
         <div className="Messaging-container">
         <div className="DM-title-container">
             <span className="DM-title">
-                <span></span>
-            </span>
-        </div>
-           {/* <form action="" onSubmit={evt => addUserToChannel(evt)}>
+            <form action="" onSubmit={evt => addUserToChannel(evt)}>
                 <input id="searchUser" value={inputText} onChange={inputHandler}/>
-                <ul>
+               {/*<ul>
                     {filteredData.slice(0, 10).map((item) => (
                         <li key={item.id}
                             onClick={(e) => setAddChannelMember(item)}>{item.uid}</li>
                     ))}
-                </ul>
-                <p>Channel member to add: {addChannelMember.uid}</p>
+                    </ul>*/}
+                <span>{addChannelMember.uid}</span>
                 <button>Add User</button>
-                    </form>*/}
+                    </form>
+            </span>
+        </div>
+
 
              <form action="" onSubmit={evt => submitHandler(evt)} className="MsgInput-container-container-container" >
                         <div className="MsgInput-container-container">
