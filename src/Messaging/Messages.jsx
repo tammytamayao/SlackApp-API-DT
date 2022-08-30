@@ -1,7 +1,6 @@
 import {useContext, useEffect, useState} from "react";
 import {UserContextHeader, UserContextInfo} from "../context/HeaderContext";
 import {baseURL, client} from "../config/AxiosConfig";
-import {GetMessages} from "./GetMessages";
 
 
 export const Messages = (userID, receiverClass) => {

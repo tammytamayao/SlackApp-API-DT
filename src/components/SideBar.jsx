@@ -13,6 +13,7 @@ import Triangle from '../components/Asset/Triangle.svg';
 import Options from '../components/Asset/Options.svg';
 import Plus from '../components/Asset/Plus.svg';
 import {ListConversations} from "../Messaging/ListConversations";
+import {ListChannels} from "../Messaging/ListChannels";
 
 const SideBar = () =>{
   const navigate=useNavigate();
@@ -55,6 +56,7 @@ const SideBar = () =>{
         <span><img src={Triangle} className="sidebar-bottom-Icon" alt="sidebarIcon"/></span>
         <span className='sidebar-bottom-caption'><span>Direct Messages</span></span>
         {ListConversations()}
+        {ListChannels()}
         <span className='Icon-optionhidden'>
         <span><img src={Options} className="sidebarIcon-option" alt="sidebarIcon"/></span>
         <span><img src={Plus} className="sidebarIcon-plus" alt="sidebarIcon"/></span>

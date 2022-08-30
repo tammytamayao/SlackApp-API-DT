@@ -8,6 +8,7 @@ import ChatDM from './components/Chat/ChatDM';
 import ChatChannel from './components/Chat/ChatChannel';
 import DashboardDM from './components/DashboardDM';
 import {Messaging} from "./Messaging/Messaging";
+import {CreateChannel} from "./Messaging/CreateChannel";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                         <Route path={"/ChatChannel"} element={<ChatChannel/>}/>
                         <Route path={"/DashboardDM"} element={<DashboardDM/>}/>
                         <Route path={"/Messaging/:userID"} element={<Messaging/>}/>
+                        <Route path={"/CreateChannel"} element={<CreateChannel/>}/>
                     </Routes>
                 </BrowserRouter>
         </div>
