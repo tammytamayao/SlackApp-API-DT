@@ -6,14 +6,18 @@ import {client} from "../config/AxiosConfig";
 
 
 export const Channel = () => {
+    const contextInfo = useContext(UserContextInfo);
+    const contextHeader = useContext(UserContextHeader);
     
     const [channelMembers, setChannelMembers] = useState([])
     const [channelDetails, setChannelDetails] = useState([])
+    
+    const [addChannelMember, setAddChannelMember] = useState({})
+    
     const [message, setMessage] = useState("");
-    const contextHeader = useContext(UserContextHeader);
-    const contextInfo = useContext(UserContextInfo);
     const [messages, setMessages] = useState([]);
     
+    const data = JSON.parse(localStorage.getItem('userList'));
     const params = useParams()
     const receiverClass = useLocation().state.receiverClass
     
@@ -22,6 +26,24 @@ export const Channel = () => {
         console.log("Channel details: ", response.data.data);
         setChannelDetails(response.data.data)
     }
+    
+    const [inputText, setInputText] = useState("");
+    let inputHandler = (e) => {
+        let lowerCase = e.target.value.toLowerCase();
+        setInputText(lowerCase);
+    };
+    
+    const filteredData = data.filter((user) => {
+        // if (inputText === '') {
+        // 	return el;
+        // }
+        // else {
+        // 	return el.uid.toLowerCase().includes(inputText)
+        // }
+        
+        if (inputText !== "")
+            return user.uid.toLowerCase().includes(inputText)
+    })
     
     const submitHandler = async (evt) => {
         evt.preventDefault();
@@ -41,6 +63,13 @@ export const Channel = () => {
         }
     }
     
+    const addUserToChannel = async (evt) => {
+        evt.preventDefault();
+        const payload = {"id": params.userID, "member_id": addChannelMember.id}
+        const response = await client.post("/channel/add_member", payload, {headers: contextHeader})
+        console.log("Add user response: ", response)
+    }
+    
     useEffect(() => {
         const response = getChannelDetails();
     }, [])
@@ -48,6 +77,17 @@ export const Channel = () => {
 
     return (
         <div>
+            <form action="" onSubmit={evt => addUserToChannel(evt)}>
+                <input id="searchUser" value={inputText} onChange={inputHandler}/>
+                <ul>
+                    {filteredData.slice(0, 10).map((item) => (
+                        <li key={item.id}
+                            onClick={(e) => setAddChannelMember(item)}>{item.uid}</li>
+                    ))}
+                </ul>
+                <p>Channel member to add: {addChannelMember.uid}</p>
+                <button>Add User</button>
+            </form>
             <form action="" onSubmit={evt => submitHandler(evt)}>
                 <input type="text" placeholder={"Enter your message here: "} onChange={evt => setMessage(evt.target.value)}/>
                 <button>Send!</button>
