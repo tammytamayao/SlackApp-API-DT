@@ -1,0 +1,89 @@
+.Messaging-container {
+    width: 80%;
+}
+
+.MsgIcon {
+    width: 18px;
+    height: 18px;
+    padding: 0px 5px;
+    /*filter: invert(60%) sepia(79%) saturate(0%) hue-rotate(86deg) brightness(118%) contrast(119%);*/
+}
+
+#MsgInput {
+    height: 30px;
+    width: 97%;
+    padding: 5px;;
+    font-size: 12pt;
+    outline: none;
+    border: none;
+}
+.MsgInput-container-container-container {
+    padding-left: 15px;
+}
+.MsgInput-container-container {
+    position: absolute;
+    bottom: 15px;
+    width: 77%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.MsgInput-container {
+    padding: 5px;
+    width:100%; 
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 5px;
+}
+
+.MsgIcon-top {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.MsgIcon-bottom {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.MsgButton {
+   border: none;
+   position: relative;
+   background-color: white;
+   left:750px
+}
+
+.Arrow{
+    border: none;
+    position: relative;
+    background-color: white;
+    left:740px
+}
+
+.conversation-container-container{
+    padding: 0;
+    margin: 0;
+}
+
+.user-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.conversation-body div {
+display: flex;
+justify-content: flex-start;
+font-weight: bold;
+}
+
+.conversation-body span {
+    display: flex;
+justify-content: flex-start;
+}
+
+.msg-userimgIcon {
+    width: 40px;
+    height: 40px;
+    padding: 5px 10px;
+}

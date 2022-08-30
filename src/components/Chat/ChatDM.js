@@ -1,8 +1,16 @@
 import React from 'react';
+import { Messaging } from '../../messaging/Messaging';
+
 
 function ChatDM () {
     return (
-        <div>This is the DM Chat Area</div>
+        <div>
+                <div>
+            <div className="DashboardDM-bottom">
+            <Messaging/>
+            </div>
+        </div>
+        </div>
     );
 }
 

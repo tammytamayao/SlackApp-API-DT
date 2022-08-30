@@ -3,18 +3,19 @@ import UserModal from "./Modal/UserModal";
 import DMHeader from "./DirectMessage/DM-Header";
 import Header from "./Header";
 import SideBar from "./SideBar";
+import ChannelHeader from "./DirectMessage/Channel-Header";
 
-function DashboardDM () {
+function DashboardChannel () {
     return (
         <div>
         <Header/>
             <div className="DashboardDM-bottom">
             <SideBar/>
-            <DMHeader/>
+            <ChannelHeader/>
             </div>
         </div>
 
     );
 }
 
-export default DashboardDM
+export default DashboardChannel;

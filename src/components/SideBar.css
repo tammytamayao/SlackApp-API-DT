@@ -12,12 +12,14 @@
     justify-content: space-around;
     border-top: 1px solid #582e58;
     border-bottom: 1px solid #582e58;
+    cursor: pointer;
 }
 
 .sidebar-title {
     font-size: 14pt;
     font-weight: bold;
     color: white;
+
 }
 
 .sidebar-title-Icon {
@@ -31,7 +33,7 @@
     padding: 12px 0px 12px 10px;
     margin: 0;
     border-bottom: 1px solid #582e58;
-
+    cursor: pointer;
 }
 
 .sidebar-top-list {
@@ -96,6 +98,7 @@
     height: 16px;
     padding: 0px;
     filter: invert(60%) sepia(79%) saturate(0%) hue-rotate(86deg) brightness(118%) contrast(119%);
+    cursor: pointer;
 }
 
 .sidebar-bottom:not(:hover) .Icon-optionhidden {
